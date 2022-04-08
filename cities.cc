@@ -5,12 +5,12 @@ using namespace std;
 
 istream &operator>> Cities(istream&, Cities&)
 {
-	
+
 }
 
 ostream &operator<< Cities(ostream &output, Cities &city)
 {
-	for (auto iterator = begin(city.citylist); it != end(city.citylist); ++it) 
+	for (auto iterator = begin(city.citylist); it != end(city.citylist); ++it)
 	{
     std::cout << *iterator.first << " " << *iterator.second << "\n";
 	}
@@ -24,11 +24,11 @@ double Cities::distance(const Cities::coord_t start, const Cities::coord_t end) 
 
 
 double Cities::total_path_distance(const permutation_t& ordering) const {
-  coord_t prev = ordering.back();
+  unsigned int prev = ordering.back();
   double total_distance = 0.0;
-  for (auto city : ordering) {
-    total_distance += distance(prev, city);
-    prev = city;
+  for (auto i : ordering) {
+    total_distance += distance(citylist_[prev], citylist_[i]);
+    prev = i;
   }
   return total_distance;
 }
