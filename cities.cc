@@ -23,7 +23,7 @@ double Cities::distance(const Cities::coord_t start, const Cities::coord_t end) 
 }
 
 
-double Cities::total_path_distance(const permutation_t& ordering) const {
+double Cities::total_path_distance(const Cities::permutation_t& ordering) const {
   unsigned int prev = ordering.back();
   double total_distance = 0.0;
   for (auto i : ordering) {
@@ -31,4 +31,12 @@ double Cities::total_path_distance(const permutation_t& ordering) const {
     prev = i;
   }
   return total_distance;
+}
+
+Cities Cities::reorder(const Cities::permutation_t& ordering) const {
+  Cities newCities;
+  for (auto i : ordering){
+    newCities.citylist_.push_back(citylist_[i]);
+  }
+  return newCities;
 }
