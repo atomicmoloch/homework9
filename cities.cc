@@ -17,6 +17,7 @@ double distance(const coord_t start, const coord_t end) const {
   //Pythagorean theorem!
 }
 
+
 double Cities::total_path_distance(const permutation_t& ordering) const {
   coord_t prev = ordering.back();
   double total_distance = 0.0;
