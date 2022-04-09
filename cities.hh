@@ -3,7 +3,7 @@
  */
 
 #pragma once
-
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -38,9 +38,10 @@ class Cities {
   // The distance between any two cities is computed as the Euclidean
   // distance on a plane between their coordinates.
   double total_path_distance(const permutation_t& ordering) const;
+  double distance(const coord_t start, const coord_t end) const;
 
   private:
 	vector<coord_t> citylist;
-  
+
     double distance(const coord_t start, const coord_t end) const;
 };
