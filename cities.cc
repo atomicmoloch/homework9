@@ -1,7 +1,15 @@
 #include "cities.hh"
 #include <math.h>
 
-	operator>> Cities(istream&)
+istream &operator>> Cities(istream&, Cities&)
+{
+	
+}
+
+ostream &operator<< Cities(ostream&, Cities&)
+{
+	
+}
 
 double distance(const coord_t start, const coord_t end) const {
   return (pow(pow(start.first() - end.first(), 2) + pow(start.second() - end.second(), 2), 0.5));

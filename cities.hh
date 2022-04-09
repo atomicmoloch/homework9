@@ -11,7 +11,8 @@ using namespace std;
 // Representation of an ordering of cities
 class Cities {
  public:
-	Cities &operator>> Cities(istream&);
+	istream &operator>> Cities(istream&, Cities&);
+	ostream &operator<< Cities(ostream&, Cities&);
  
   // A pair of integral coordinates for each city
   using coord_t = std::pair<int, int>;
