@@ -1,14 +1,19 @@
 #include "cities.hh"
 #include <math.h>
 
+using namespace std;
+
 istream &operator>> Cities(istream&, Cities&)
 {
 	
 }
 
-ostream &operator<< Cities(ostream&, Cities&)
+ostream &operator<< Cities(ostream &output, Cities &city)
 {
-	
+	for (auto iterator = begin(city.citylist); it != end(city.citylist); ++it) 
+	{
+    std::cout << *iterator.first << " " << *iterator.second << "\n";
+	}
 }
 
 double distance(const coord_t start, const coord_t end) const {
