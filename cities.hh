@@ -40,7 +40,7 @@ class Cities {
   double total_path_distance(const permutation_t& ordering) const;
 
   private:
-	vector<coord_t> citylist
+	vector<coord_t> citylist;
   
     double distance(const coord_t start, const coord_t end) const;
 };
