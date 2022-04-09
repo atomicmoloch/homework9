@@ -16,8 +16,8 @@ ostream &operator<< Cities(ostream &output, Cities &city)
 	}
 }
 
-double distance(const coord_t start, const coord_t end) const {
-  return (pow(pow(start.first() - end.first(), 2) + pow(start.second() - end.second(), 2), 0.5));
+double Cities::distance(const Cities::coord_t start, const Cities::coord_t end) const {
+  return (pow(pow(start.first - end.first, 2) + pow(start.second - end.second, 2), 0.5));
   //sqrt((x1-x2)^2   +  (y1-y2)^2)
   //Pythagorean theorem!
 }
