@@ -1,6 +1,6 @@
 #include "cities.hh"
 
-
+	operator>> Cities(istream&)
 
 
 
