@@ -41,7 +41,7 @@ class Cities {
   double distance(const coord_t start, const coord_t end) const;
 
   private:
-	vector<coord_t> citylist_;
+	vector<coord_t> citylist;
 
-
+    double distance(const coord_t start, const coord_t end) const;
 };

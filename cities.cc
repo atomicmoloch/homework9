@@ -1,11 +1,28 @@
 #include "cities.hh"
+#include <string>
 #include <math.h>
 
 using namespace std;
 /*
 istream &operator>> Cities(istream&, Cities&)
 {
+	string line;
+	bool first = true;
+	coord_t tempc;
+	while(getline(inp, line, ' '))
+	{
+		int num = stoi(line);
+		if (first)
+		{
+			tempc.first = num;
+		}
+		else
+		{
+			tempc.second = num;
+			citylist.push_back(tempc);
+		}
 
+	}
 }
 
 ostream &operator<< Cities(ostream &output, Cities &city)
