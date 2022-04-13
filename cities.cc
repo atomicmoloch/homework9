@@ -68,6 +68,10 @@ Cities::permutation_t Cities::random_permutation(unsigned len) {
 	for (unsigned i = 0; i < len; i++){
 		randomList.push_back(i); //Populate the permutation with ordered numbers, (1, 2, 3, 4, ... len-1)
 	}
-	std::shuffle(std::begin(randomList), std::end(randomList), generator);
+	std::shuffle(std::begin(randomList), std::end(randomList), generator);  //Shuffle
 	return randomList;
+}
+
+unsigned int Cities::get_length() {
+	return citylist_.size();
 }

@@ -41,6 +41,7 @@ class Cities {
   double distance(const coord_t start, const coord_t end) const;
 
   permutation_t random_permutation(unsigned len);
+  unsigned int get_length();
 
   private:
 	vector<coord_t> citylist_;
