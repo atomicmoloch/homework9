@@ -2,6 +2,7 @@
 #include <string>
 #include <math.h>
 #include <random>
+#include <algorithm>
 
 using namespace std;
 
@@ -62,7 +63,11 @@ Cities Cities::reorder(const Cities::permutation_t& ordering) const {
 Cities::permutation_t Cities::random_permutation(unsigned len) {
 	std::random_device generator;
 	//std::default_random_engine generator;
-	std::uniform_int_distribution<unsigned int> distribution(0, len-1);
-	permutation_t random;
-	return random;
+
+	permutation_t randomList; //Create an empty permutation
+	for (unsigned i = 0; i < len; i++){
+		randomList.push_back(i); //Populate the permutation with ordered numbers, (1, 2, 3, 4, ... len-1)
+	}
+	std::shuffle(std::begin(randomList), std::end(randomList), generator);
+	return randomList;
 }
