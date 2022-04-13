@@ -1,6 +1,7 @@
 #include "cities.hh"
 #include <string>
 #include <math.h>
+#include <random>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ istream &operator>> Cities(istream&, Cities&)
 		else
 		{
 			tempc.second = num;
-			citylist.push_back(tempc);
+			citylist_.push_back(tempc);
 		}
 
 	}
@@ -27,7 +28,7 @@ istream &operator>> Cities(istream&, Cities&)
 
 ostream &operator<< Cities(ostream &output, Cities &city)
 {
-	for (auto iterator = begin(city.citylist); it != end(city.citylist); ++it)
+	for (auto iterator = begin(city.citylist_); it != end(city.citylist_); ++it)
 	{
     std::cout << *iterator.first << " " << *iterator.second << "\n";
 	}
@@ -56,4 +57,12 @@ Cities Cities::reorder(const Cities::permutation_t& ordering) const {
     newCities.citylist_.push_back(citylist_[i]);
   }
   return newCities;
+}
+
+Cities::permutation_t Cities::random_permutation(unsigned len) {
+	std::random_device generator;
+	//std::default_random_engine generator;
+	std::uniform_int_distribution<unsigned int> distribution(0, len-1);
+	permutation_t random;
+	return random;
 }
