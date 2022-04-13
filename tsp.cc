@@ -18,9 +18,10 @@ int main(int argc, char** argv) {
     return -3;
   }
 
-  unsigned int numberIterations = 100;
+  unsigned int numberIterations = 1000000;
   Cities fastestRoute;
-  //ifile >> fastestRoute;
+  ifile >> fastestRoute;
+  /*
   std::vector<Cities::coord_t> input;
   auto temppair = std::make_pair(10, 5);
   input.push_back(temppair);
@@ -35,6 +36,7 @@ int main(int argc, char** argv) {
 
   //cout.precision(17);
   fastestRoute.input_cities(input);
+  */
   double shortestDistance = fastestRoute.total_path_distance(fastestRoute.ordered_permutation());
   std::cout << "1   " << shortestDistance << "\n";
 
@@ -50,11 +52,11 @@ int main(int argc, char** argv) {
     }
   }
 
-  /*
+
   file = "shortest.tsv";
   std::ofstream ofile(file);
   ofile << fastestRoute;
-  */
+
 
 
 
