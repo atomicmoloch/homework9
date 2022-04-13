@@ -12,7 +12,7 @@ int main() {
 
   std::cout << "Random permutations:\n";
   for (int i = 0; i < 10; i++){
-    auto randPerm = city.random_permutation(10);
+    auto randPerm = city.random_permutation();
     for (auto i: randPerm){
       std::cout << i;
     }

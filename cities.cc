@@ -33,7 +33,7 @@ ostream &operator<< Cities(ostream &output, Cities &city)
 	{
     std::cout << *iterator.first << " " << *iterator.second << "\n";
 	}
-}
+} 
 
 double Cities::distance(const Cities::coord_t start, const Cities::coord_t end) const {
   return (pow(pow(start.first - end.first, 2) + pow(start.second - end.second, 2), 0.5));
@@ -49,6 +49,7 @@ double Cities::total_path_distance(const Cities::permutation_t& ordering) const 
     total_distance += distance(citylist_[prev], citylist_[i]);
     prev = i;
   }
+	total_distance = std::round(total_distance * 1000) / 1000;
   return total_distance;
 }
 
@@ -60,18 +61,26 @@ Cities Cities::reorder(const Cities::permutation_t& ordering) const {
   return newCities;
 }
 
-Cities::permutation_t Cities::random_permutation(unsigned len) {
+Cities::permutation_t Cities::random_permutation() const{
 	std::random_device generator;
 	//std::default_random_engine generator;
 
 	permutation_t randomList; //Create an empty permutation
-	for (unsigned i = 0; i < len; i++){
-		randomList.push_back(i); //Populate the permutation with ordered numbers, (1, 2, 3, 4, ... len-1)
+	for (unsigned i = 0; i < citylist_.size(); i++){
+		randomList.push_back(i); //Populate the permutation with ordered numbers, (0, 1, 2, 3, ... len-1)
 	}
 	std::shuffle(std::begin(randomList), std::end(randomList), generator);  //Shuffle
 	return randomList;
 }
 
-unsigned int Cities::get_length() {
-	return citylist_.size();
+Cities::permutation_t Cities::ordered_permutation() const{
+	permutation_t orderedList;
+	for (unsigned i = 0; i < citylist_.size(); i++){
+		orderedList.push_back(i);
+	}
+	return orderedList;
+}
+
+void Cities::input_cities(std::vector<Cities::coord_t> input) {
+	citylist_ = input;
 }
