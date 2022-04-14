@@ -6,34 +6,9 @@
 
 using namespace std;
 
-istream &operator>> Cities(istream&, Cities&)
-{
-	string line;
-	bool first = true;
-	coord_t tempc;
-	while(getline(inp, line, ' '))
-	{
-		int num = stoi(line);
-		if (first)
-		{
-			tempc.first = num;
-		}
-		else
-		{
-			tempc.second = num;
-			citylist_.push_back(tempc);
-		}
 
-	}
-}
 
-ostream &operator<< Cities(ostream &output, Cities &city)
-{
-	for (auto iterator = begin(city.citylist_); it != end(city.citylist_); ++it)
-	{
-    std::cout << *iterator.first << " " << *iterator.second << "\n";
-	}
-}
+
 
 double Cities::distance(const Cities::coord_t start, const Cities::coord_t end) const {
   return (pow(pow(start.first - end.first, 2) + pow(start.second - end.second, 2), 0.5));
@@ -91,4 +66,47 @@ Cities::permutation_t Cities::ordered_permutation() const{ //Same as random_perm
 
 void Cities::input_cities(std::vector<Cities::coord_t> input) { //Used for debugging purposes.
 	citylist_ = input;
+}
+
+ostream& operator<<(ostream &output, Cities& city)
+{
+	for (auto iterator = begin(city.citylist_); iterator != end(city.citylist_); ++iterator)
+	{
+    output << (*iterator).first << " " << (*iterator).second << "\n";
+	}
+	return output;
+}
+
+istream& operator>>(istream& inp, Cities& city)
+{
+	string line;
+    char curr;
+	Cities::coord_t tempc;
+    bool first = true;
+
+    while(inp.get(curr)) //This is not good code
+    {
+        if (isdigit(curr))
+        {
+            line.push_back(curr);
+        }
+        else
+        {
+            int num = stoi(line);
+            if (first)
+            {
+                tempc.first = num;
+                first = false;
+            }
+            else
+            {
+                tempc.second = num;
+                city.citylist_.push_back(tempc);
+                first = true;
+            }
+            line = "";
+        }
+    }
+
+	return inp;
 }
