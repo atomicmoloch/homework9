@@ -20,7 +20,7 @@ double Cities::distance(const Cities::coord_t start, const Cities::coord_t end) 
 double Cities::total_path_distance(const Cities::permutation_t& ordering) const {
   unsigned int prev = ordering.back(); //The first calculation done is last -> first
   double total_distance = 0.0;
-  for (auto i : ordering) {
+  for (auto i : ordering) { //Simply sums the the distances between the cities in the permutation in order
     total_distance += distance(citylist_[prev], citylist_[i]);
     prev = i;
   }
@@ -38,7 +38,7 @@ double Cities::total_path_distance(const Cities::permutation_t& ordering) const 
 }
 
 Cities Cities::reorder(const Cities::permutation_t& ordering) const {
-  Cities newCities;
+  Cities newCities; //Returns a new city object with the ordering given
   for (auto i : ordering){
     newCities.citylist_.push_back(citylist_[i]);
   }
@@ -64,15 +64,15 @@ Cities::permutation_t Cities::ordered_permutation() const{ //Same as random_perm
 	return orderedList;
 }
 
-void Cities::input_cities(std::vector<Cities::coord_t> input) { //Used for debugging purposes.
-	citylist_ = input;
-}
+//void Cities::input_cities(std::vector<Cities::coord_t> input) { //Used for debugging purposes.
+//	citylist_ = input;
+//}
 
 ostream& operator<<(ostream &output, Cities& city)
 {
 	for (auto iterator = begin(city.citylist_); iterator != end(city.citylist_); ++iterator)
 	{
-    output << (*iterator).first << " " << (*iterator).second << "\n";
+    output << (*iterator).first << " " << (*iterator).second << "\n"; //Outputs the cities one by one from citylist with proper formatting
 	}
 	return output;
 }
@@ -84,15 +84,15 @@ istream& operator>>(istream& inp, Cities& city)
 	Cities::coord_t tempc;
     bool first = true;
 
-    while(inp.get(curr)) //This is not good code
+    while(inp.get(curr)) //Gets next character
     {
-        if (isdigit(curr))
+        if (isdigit(curr)) //If carachter is a number, adds it to string
         {
             line.push_back(curr);
         }
         else
         {
-            int num = stoi(line);
+            int num = stoi(line); //if character is not a number, converts string to an int and empties string, and adds resultant int to coordinate
             if (first)
             {
                 tempc.first = num;

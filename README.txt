@@ -3,8 +3,6 @@ Kavi Wilson
 
 Here are some of our thought processes on the different parts of the project:
 
-operator << and >> override todo
-
 total_path_distance just sums up the distances between each city in the order
 it's given. I made a helper function, distance(), that returned the distance
 betweeen two points, and used that in total_path_distance.
@@ -28,4 +26,3 @@ was required. This is probably unnecessary, as it's not more likely that the
 permutation the city is intialized in is the fastest, but it makes it feel more
 complete.
 
-part 8 todo
